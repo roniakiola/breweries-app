@@ -1,6 +1,8 @@
 import { AppBar, IconButton, Typography, Toolbar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
+import SearchBrewery from './SearchBrewery';
+
 const Navbar = () => {
   return (
     <>
@@ -18,6 +20,7 @@ const Navbar = () => {
           <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
             Breweries
           </Typography>
+          <SearchBrewery />
         </Toolbar>
       </AppBar>
     </>

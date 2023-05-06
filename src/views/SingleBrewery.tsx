@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { Breadcrumbs, Typography } from '@mui/material';
-import Link from '@mui/material/Link';
+import { Link } from 'react-router-dom';
 
 import useBreweries from '../hooks/useBreweries';
 import Brewery from '../interfaces/interface.Brewery';
@@ -21,9 +21,7 @@ const SingleBrewery = () => {
   return (
     <>
       <Breadcrumbs aria-label='breadcrumb'>
-        <Link color='text.primary' href='/'>
-          Home
-        </Link>
+        <Link to='/'>Home</Link>
         <Typography color='text.primary'>{singleBrewery.name}</Typography>
       </Breadcrumbs>
       <h1>{singleBrewery.name}</h1>

@@ -16,7 +16,7 @@ const Home = () => {
       {(breweries as Brewery[]).map((brewery) => (
         <Grid item key={brewery.id} xs={12} sm={6} md={4}>
           <Link to={brewery.id}>
-            <Card variant='outlined'>
+            <Card variant='outlined' sx={{ bgcolor: 'grey' }}>
               <CardContent>
                 <Typography>{brewery.name}</Typography>
                 <Typography>{brewery.street}</Typography>
