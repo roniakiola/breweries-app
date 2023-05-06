@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import Brewery from '../interfaces/interface.Brewery';
 
-const useBreweries = () => {
+const useBreweries = (id?: string) => {
   const [breweries, setBreweries] = useState<Brewery[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -16,8 +16,12 @@ const useBreweries = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetchBrewery('https://api.openbrewerydb.org/v1/breweries');
-  }, []);
+    if (id) {
+      fetchBrewery(`https://api.openbrewerydb.org/v1/breweries/${id}`);
+    } else {
+      fetchBrewery('https://api.openbrewerydb.org/v1/breweries');
+    }
+  }, [id]);
   return { breweries, loading };
 };
 

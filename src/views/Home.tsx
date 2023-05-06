@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom';
+import { Card, CardContent, Typography, Grid } from '@mui/material';
+
 import useBreweries from '../hooks/useBreweries';
 
 const Home = () => {
@@ -8,14 +11,20 @@ const Home = () => {
   }
 
   return (
-    <ul>
+    <Grid container spacing={2}>
       {breweries.map((brewery) => (
-        <li key={brewery.id}>
-          <h2>{brewery.name}</h2>
-          <p>{brewery.street}</p>
-        </li>
+        <Grid item key={brewery.id} xs={12} sm={6} md={4}>
+          <Link to={brewery.id}>
+            <Card variant='outlined'>
+              <CardContent>
+                <Typography>{brewery.name}</Typography>
+                <Typography>{brewery.street}</Typography>
+              </CardContent>
+            </Card>
+          </Link>
+        </Grid>
       ))}
-    </ul>
+    </Grid>
   );
 };
 

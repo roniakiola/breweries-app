@@ -1,15 +1,44 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  Container,
+  AppBar,
+  IconButton,
+  Typography,
+  Button,
+  Toolbar,
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 import Home from './views/Home';
+import Brewery from './views/Brewery';
 
 const App = () => {
   return (
     <Router>
       <>
-        <Routes>
-          <Route path='/' element={<Home />} />
-        </Routes>
+        <AppBar position='fixed'>
+          <Toolbar>
+            <IconButton
+              size='large'
+              edge='start'
+              color='inherit'
+              aria-label='menu'
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
+              Breweries
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Container sx={{ mt: 10 }}>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/:id' element={<Brewery />} />
+          </Routes>
+        </Container>
       </>
     </Router>
   );
