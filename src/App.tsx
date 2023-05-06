@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Container } from '@mui/material';
 
 import Home from './views/Home';
-import SingleBrewery from './views/Brewery';
+import SingleBrewery from './views/SingleBrewery';
 import Navbar from './components/Navbar';
 
 const App = () => {
