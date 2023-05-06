@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { Box, TextField, IconButton } from '@mui/material';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
-import TextField from '@mui/material/TextField';
+import { Link } from 'react-router-dom';
+
 import useBreweries from '../hooks/useBreweries';
 import debounce from '../functions/debounce';
 import Brewery from '../interfaces/interface.Brewery';
@@ -8,13 +11,14 @@ import Brewery from '../interfaces/interface.Brewery';
 const SearchBrewery = () => {
   const [input, setInput] = useState('');
   const { breweries } = useBreweries();
+  const [filteredBreweries, setFilteredBreweries] = useState<Brewery[]>([]);
 
   const searchBreweries = debounce((query: string) => {
-    const filteredBreweries = (breweries as Brewery[]).filter(
-      (brewery: Brewery) =>
-        brewery.name.toLowerCase().includes(query.toLowerCase())
+    const foundBreweries = (breweries as Brewery[]).filter((brewery: Brewery) =>
+      brewery.name.toLowerCase().includes(query.toLowerCase())
     );
-    console.log(filteredBreweries);
+    setFilteredBreweries(foundBreweries);
+    console.log(foundBreweries);
   }, 1000);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,17 +26,46 @@ const SearchBrewery = () => {
     setInput(query);
     searchBreweries(query);
   };
+  const handleClear = () => {
+    setInput('');
+  };
 
   return (
     <>
       <TextField
-        label='Controlled'
+        label='Search Breweries'
         variant='outlined'
         size='small'
         sx={{ color: 'white', bgcolor: 'white' }}
         value={input}
         onChange={handleChange}
+        InputProps={{
+          endAdornment: (
+            <IconButton onClick={handleClear}>
+              <HighlightOffIcon />
+            </IconButton>
+          ),
+        }}
       />
+      {input && (
+        <Box
+          sx={{
+            bgcolor: 'grey',
+            width: '50%',
+            position: 'absolute',
+            display: 'flex',
+            flexDirection: 'column',
+            maxHeight: '200px',
+            overflow: 'auto',
+            right: '10px',
+            top: '60px',
+          }}
+        >
+          {filteredBreweries.map((brewery) => (
+            <Link to={brewery.id}>{brewery.name}</Link>
+          ))}
+        </Box>
+      )}
     </>
   );
 };
