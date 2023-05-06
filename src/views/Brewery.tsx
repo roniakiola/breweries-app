@@ -1,10 +1,15 @@
 import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 import useBreweries from '../hooks/useBreweries';
+import Brewery from '../interfaces/interface.Brewery';
 
-const Brewery = () => {
-  const { id } = useParams();
+const BreweryDetails = () => {
+  const { id } = useParams<{ id: string }>();
   const { breweries, loading } = useBreweries(id);
-  const singleBrewery = breweries[0];
+  const singleBrewery = breweries as Brewery;
+
+  console.log(breweries);
+  console.log(id);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -16,4 +21,4 @@ const Brewery = () => {
     </>
   );
 };
-export default Brewery;
+export default BreweryDetails;
