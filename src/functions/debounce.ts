@@ -7,4 +7,5 @@ const debounce = (callback: Function, delay: number) => {
     }, delay);
   };
 };
+
 export default debounce;

@@ -1,8 +1,7 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Box, TextField, IconButton } from '@mui/material';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-
-import { Link } from 'react-router-dom';
 
 import useBreweries from '../hooks/useBreweries';
 import debounce from '../functions/debounce';
@@ -50,7 +49,7 @@ const SearchBrewery = () => {
       {input && (
         <Box
           sx={{
-            bgcolor: 'grey',
+            bgcolor: '#1976d2',
             width: '50%',
             position: 'absolute',
             display: 'flex',
@@ -62,7 +61,9 @@ const SearchBrewery = () => {
           }}
         >
           {filteredBreweries.map((brewery) => (
-            <Link to={brewery.id}>{brewery.name}</Link>
+            <Box sx={{ m: 1, p: 1, bgcolor: 'white' }}>
+              <Link to={brewery.id}>{brewery.name}</Link>
+            </Box>
           ))}
         </Box>
       )}

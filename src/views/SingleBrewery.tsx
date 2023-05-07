@@ -1,6 +1,5 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Breadcrumbs, Typography, Box, ThemeProvider } from '@mui/material';
-import { Link } from 'react-router-dom';
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 import useBreweries from '../hooks/useBreweries';
@@ -14,9 +13,6 @@ const SingleBrewery = () => {
 
   let theme = createTheme();
   theme = responsiveFontSizes(theme);
-
-  console.log(breweries);
-  console.log(id);
 
   if (loading) {
     return <p>Loading...</p>;

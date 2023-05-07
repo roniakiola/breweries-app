@@ -1,25 +1,58 @@
-# Breweries App
+# Introduction
 
-Fetch, display, and search for brewery companies from the given API endpoint, using React and TypeScript
+Simple app to list different Breweries from API endpoint. User can search for fetched Breweries by their name in search bar. 
 
-## Requirements
+Test it out: https://jolly-melomakarona-6ce03d.netlify.app/
 
-1. Check the documentation at [https://www.openbrewerydb.org/documentation](https://www.openbrewerydb.org/documentation) Fetch and display information of all the companies.
+## Table of contents
 
-2. Have proper display and routing that user can switch to/back from specific company's detailed page
+- [Technologies](#technologies)
+- [Project structure](#project-structure)
+- [Getting started](#getting-started)
 
-3. Create search component to enable user to input text and search for companies by name.
+## Technologies
 
-4. Use MaterialUI to make your design more appealing and responsive
+- TypeScript
+- Material UI
+- React
+- React Router DOM
 
-5. Implement performance optimization where applicable
+## Project structure
+```bash
+│     .gitignore
+│     package.json
+│     readme.md
+│     tsconfig.json
+│
+├───public
+│       index.html
+│       manifest.json
+│       robots.txt
+│
+└───src
+    │     App.tsx
+    │     index.tsx
+    │     react-app-env.d.ts
+    │
+    ├───components
+    │       Navbar.tsx
+    │       SearchBrewery.tsx
+    │
+    ├───functions
+    │       debounce.ts
+    │
+    ├───hooks
+    │       useBreweries.ts
+    │
+    ├───interfaces
+    │       interface.Brewery.ts
+    │
+    └───views
+            Home.tsx
+            SingleBrewery.tsx
+```
 
-6. Deploy your application and rewrite README file
+## Getting started
 
-## Optional
-
-7. Use the queries listed in the documentation to sort and limit the returned data and build pagination feature.
-
-8. Create a contact form so that user can send question along with their contact information. 
-
-9. Use Google-login option to pre-fill the contact form for user.
+1. Use <code>git clone</code> and <code>npm i</code> to install the project.
+2. Refer to <code>package.json</code> for scripts to run. Use<code>npm run start</code> to run in dev mode.
